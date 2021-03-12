@@ -1,0 +1,22 @@
+#compdef flexa
+
+_flexa() {
+  local state
+
+  _arguments \
+    '1: :->argument'\
+    '*: :->option'
+
+  case $state in
+    (argument) _arguments '1:profiles:(rm local stop)' ;;
+    (option) 
+      case $words[2] in
+        (rm) compadd "$@" generated backoffice ;;
+        (local) compadd "$@" user-data-widget configuration-widget reset;;
+        (stop) compadd "$@" unused backoffice;;
+      esac
+    ;;
+  esac
+}
+
+_flexa "$@"

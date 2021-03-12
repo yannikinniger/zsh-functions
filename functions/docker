@@ -1,0 +1,7 @@
+docker() {
+ if [[ $@ == "psf" ]]; then
+  command docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+ else
+  command docker "$@"
+ fi
+}

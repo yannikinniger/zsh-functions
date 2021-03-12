@@ -1,0 +1,11 @@
+clevercircles() {
+  command=$1
+
+  if [ "$command" = 'start' ]; then
+    cdk clevercircles:start
+  fi
+
+  if [ "$command" = 'stop' ]; then
+    cdk clevercircles:stop
+  fi
+}

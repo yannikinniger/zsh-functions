@@ -1,0 +1,44 @@
+flexa() {
+  command=$1
+  argument=$2
+
+  if [ "$command" = 'rm' ]; then
+    case $argument in
+      generated)
+        rm -rf ~/dev/flexa/cdk-plugins-environment-flexa/app/generated/
+        echo 'flexa env generated folder deleted'
+      ;;
+      backoffice)
+        cdk rm workbench && cdk rm static
+      ;;
+    esac
+  fi
+
+  if [ "$command" = 'stop' ]; then
+    case $argument in
+      unused)
+        cdk stop cob && cdk stop broker-monitor && cdk stop banking-adapter && cdk stop mq && cdk stop onboarding && cdk stop axa-onboarding
+      ;;
+      backoffice)
+        cdk stop workbench && cdk stop static
+      ;;
+    esac
+  fi
+
+  if [ "$command" = 'local' ]; then
+    case $argument in
+      user-data-widget)
+          sed -i "" "s|/static/workbench/widgets/flexa-integration/user-data-widget/version.json|http://localhost:3000/version-mock.json|" ~/dev/flexa/cdk-plugins-environment-flexa/app/config/workbench/configurations/widgets/flexa-integration-widgets.conf && \
+          echo 'user-data-widget switched to localhost'
+      ;;
+      configuration-widget)
+          sed -i "" "s|/static/workbench/widgets/flexa-integration/configuration-widget/version.json|http://localhost:3000/version-mock.json|" ~/dev/flexa/cdk-plugins-environment-flexa/app/config/workbench/configurations/widgets/flexa-integration-widgets.conf && \
+          echo 'configuration-widget switched to localhost'
+      ;;
+      reset)
+          git -C ~/dev/flexa/cdk-plugins-environment-flexa/.git --work-tree ~/dev/flexa/cdk-plugins-environment-flexa/ checkout HEAD -- ../app/config/workbench/configurations/widgets/flexa-integration-widgets.conf && \
+          echo 'widget config reset to remote'
+      ;;
+    esac 
+  fi 
+}

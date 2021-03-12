@@ -1,0 +1,10 @@
+#compdef clevercircles
+
+_clevercircles() {
+  local state
+
+  _arguments \
+    '1: :(start stop)'
+}
+
+_clevercircles "$@"
