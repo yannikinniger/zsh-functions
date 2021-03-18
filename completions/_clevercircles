@@ -4,7 +4,17 @@ _clevercircles() {
   local state
 
   _arguments \
-    '1: :(start stop)'
+    '1: :->argument'\
+    '*: :->option'
+
+  case $state in
+    (argument) _arguments '1:profiles:(start stop)' ;;
+    (option) 
+      case $words[2] in
+        (start) compadd "$@" cdk dev ;;
+      esac
+    ;;
+  esac
 }
 
 _clevercircles "$@"

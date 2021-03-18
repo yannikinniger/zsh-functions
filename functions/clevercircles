@@ -1,8 +1,19 @@
 clevercircles() {
   command=$1
+  argument=$2
 
   if [ "$command" = 'start' ]; then
-    cdk clevercircles:start
+    case $argument in
+      cdk)
+        cdk clevercircles:start
+      ;;
+      dev)
+        nvm use 8
+        npm start
+      ;;
+      *)
+        echo invalid argument
+    esac
   fi
 
   if [ "$command" = 'stop' ]; then

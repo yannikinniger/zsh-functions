@@ -40,5 +40,19 @@ flexa() {
           echo 'widget config reset to remote'
       ;;
     esac 
+  fi
+
+  if [ "$command" = 'backoffice' ]; then
+    case $argument in
+      undeploy)
+          cdk rm workbench && cdk rm static && \
+          echo 'undeployed backoffice'
+      ;;
+      deploy)
+          rm -rf ~/dev/flexa/cdk-plugins-environment-flexa/app/generated/
+          cdk init workbench && cdk init static && \
+          echo 'undeployed backoffice'
+      ;;
+    esac 
   fi 
 }

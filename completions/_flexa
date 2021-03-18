@@ -8,12 +8,13 @@ _flexa() {
     '*: :->option'
 
   case $state in
-    (argument) _arguments '1:profiles:(rm local stop)' ;;
+    (argument) _arguments '1:profiles:(rm local stop backoffice)' ;;
     (option) 
       case $words[2] in
         (rm) compadd "$@" generated backoffice ;;
         (local) compadd "$@" user-data-widget configuration-widget reset;;
-        (stop) compadd "$@" unused backoffice;;
+        (stop) compadd "$@" unused;;
+        (backoffice) compadd "$@" undeploy deploy;;
       esac
     ;;
   esac
