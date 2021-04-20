@@ -51,7 +51,7 @@ flexa() {
       deploy)
           rm -rf ~/dev/flexa/cdk-plugins-environment-flexa/app/generated/
           cdk init workbench && cdk init static && \
-          echo 'undeployed backoffice'
+          echo 'deployed backoffice'
       ;;
     esac 
   fi 
