@@ -1,0 +1,8 @@
+alias zshconfig="code ~/.zshrc"
+alias zshreload="source ~/.zshrc"
+
+alias ll="ls -la"
+
+alias gstp="git stash push"
+
+alias nv="nvm current"

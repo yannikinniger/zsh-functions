@@ -1,0 +1,8 @@
+# Import aliases
+source ./.aliases
+
+# Load functions and completions
+for f (./.functions/functions/*(N.)) . $f
+
+fpath=(./.functions/completions $fpath)
+rm -f ~/.zcompdump; compinit
