@@ -1,8 +1,10 @@
+export CUSTOM_ZSH_PATH=$HOME/custom-zsh
+
 # Import aliases
-source ./.aliases
+source $CUSTOM_ZSH_PATH/.aliases
 
 # Load functions and completions
-for f (./.functions/functions/*(N.)) . $f
+for f ($CUSTOM_ZSH_PATH/functions/*(N.)) . $f
 
-fpath=(./.functions/completions $fpath)
+fpath=($CUSTOM_ZSH_PATH/completions $fpath)
 rm -f ~/.zcompdump; compinit
