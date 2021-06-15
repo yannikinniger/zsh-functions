@@ -4,5 +4,6 @@ alias zshreload="source ~/.zshrc"
 alias ll="ls -la"
 
 alias gstp="git stash push"
+alias gcmsg="git commit -S -m"
 
 alias nv="nvm current"
